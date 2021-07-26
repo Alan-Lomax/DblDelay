@@ -1,13 +1,3 @@
-
-  public:
-    DblDelay(unsigned long outputOnDelay, unsigned long outputOffDelay, unsigned long blipfilter);
-    void init();
-    void Update();
-    bool State();
-    void Start();
-    void Stop();
-
-
 # DblDelay
 
 This class defines a timer that has individually configurable on delay and off delay intervals.
