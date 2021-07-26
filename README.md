@@ -1,7 +1,7 @@
 # DblDelay
 
 This class defines a timer that has individually configurable on delay and off delay intervals.
-Very handy if using LDR's to activate signals as the signal can be configured to change a few seconds after the LDR is triggered
+This is very handy if using LDR's to activate signals as each signal can be configured to change a few seconds after the LDR is triggered
 and stay activated for some period of time after the LDR has been cleared.
 
 ### Files: DblDelay.h, DblDelay.CPP
@@ -13,7 +13,7 @@ Include the header file near the top of your code. (After this is done the compi
 
 Then create a new member of this class as follows:
 
-     DblDelay(outputOnDelay, outputOffDelay, blipfilter);
+     DblDelay myTimer(outputOnDelay, outputOffDelay, blipfilter);
 
 Where outputOnDelay, outputOffDelay, blipfilter are all in milliseconds.
 
@@ -22,9 +22,8 @@ Where outputOnDelay, outputOffDelay, blipfilter are all in milliseconds.
 
 ### Methods
     void Update();                     // Update things based on elapsed time (call this in your loop code as often as possible)
-    bool State();                      // Return the current state of the DblDelay Timer
-
-
-### Properties:
     void Start();                      // Start the Timer running
     void Stop();                       // Stop the Timer ready for next time.
+
+### Properties:
+    bool State();                      // Return the current state of the DblDelay Timer
