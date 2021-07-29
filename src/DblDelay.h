@@ -1,26 +1,22 @@
 #ifndef MY_DBLDELAY_H
 #define MY_DBLDELAY_H
-#include <Arduino.h>
 
 class DblDelay {
 
   private:
-    bool _bit;
-    bool _state;
-    bool _lastReading;
-    bool _runStatus;
-    bool _lastRunStatus;
-    unsigned long _previousMillis = 0;
-    unsigned long _blipfilter     = 0;
-    unsigned long _outputOnDelay  = 0;
-    unsigned long _outputOffDelay = 0;
+    bool _output;                         // DblDelay Timer output
+    bool _input;                          // DblDelay Timer input
+    bool _lastInput;                      // internal value to see if something has changed
+    bool _invertInput;                    // invert the input of the timer if true. (needed for some sensors)
+    unsigned long _previousMillis = 0;    // internal value to see if something has changed
+    unsigned long _outputOnDelay  = 0;    // internal value to hold the on delay time value
+    unsigned long _outputOffDelay = 0;    // internal value to hold the off delay time value
+    void init();
 
   public:
-    DblDelay(unsigned long outputOnDelay, unsigned long outputOffDelay, unsigned long blipfilter);
-    void init();
-    void Update();
-    bool State();
-    void Start();
-    void Stop();
+    DblDelay(unsigned long outputOnDelay, unsigned long outputOffDelay, bool invertInput);
+    void update();
+    void input(bool myInput);
+    bool output();
 };
 #endif
