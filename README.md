@@ -5,20 +5,20 @@ Two different delays are involved using a passed boolean value as a trigger.
 - When the boolean goes from "low to high" the output of this class also goes from "Low to High" after an ON Delay period that you define.
 - Conversely when the boolean goes from "high to low" the output of this class also goes from "high to low" but this time after an OFF Delay period that you also define.
 
-This type of timer is very handy for general timing and automation around the model layout. 
+On a model railway this type of timer is very handy for general timing, signalling and automation . 
 
 Notes:
-1) The timer is not associated with any specific I/O pins it just wants a booean 'input'
+1) This class does not associate with any specific I/O pins it just wants a boolean 'input'
 2) Either of the time intervals could be 'zero' thus making it a simple 'On Delay' only, or 'off delay only.
 3) For a visual representation see the simple timing chart in the github repo
-4) Some inputs (eg I/R sensors) are inverted whereby the signal is normally high when nothing is in the beam .. and when something is detected the signal goes low.
-   For these types of sensors set the boolean "inverted input" parameter to true.
+4) Some sensors (active IR sensors - varies by manufacturer) are inverted whereby the signal is normally high (when nothing is in the beam)
+   and when something is detected the signal goes low.  For these types of sensors set the boolean "invertInput" parameter to true.
 
-An example of real use:
+An example of use:
 Using a Light dependant resistor (LDR) to detect a passing train. Send the on/off value to a timer of this class and it can activate signals
-after a few seconds. The signals will not change if a gap passes over (It is inherantly 'debounced' because of the off delay.). 
-Furthermore a long off delay would keep the signals at danger until the train has truly passed on down the line.
-A second timer (using the same input but with different timing values) could trigger some trackside animation effects like sounds.
+after a few seconds. The signals connected to the output will not change if a small gap passes over the LDR (It is inherantly 'debounced' because of the off delay.) 
+Furthermore a long off delay would keep the signals at "danger" until the train has truly passed on down the line.
+A second timer (using the same input but with different timing values) could trigger some trackside animation effects (like sounds).
 
 ### Files: DblDelay.h, DblDelay.CPP
 
@@ -63,8 +63,6 @@ A second timer (using the same input but with different timing values) could tri
       delay (1000);
     #endif
     }
-
-
 
 
 ### Instantiate
