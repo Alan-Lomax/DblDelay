@@ -69,11 +69,12 @@ A second timer (using the same input but with different timing values) could tri
     DblDelay(unsigned long outputOnDelay, unsigned long outputOffDelay, bool invertInput);
 
 ### Methods 
-    void update();
-    void input(bool myInput);
+    void update();              // update timer to see if anything needs doing this time through the loop
 
 ### Properties 
-    bool output();
+
+    void input(bool myInput);   // pass a boolean input to the timer
+    bool output();              // get the output from the timer
 
 
 
