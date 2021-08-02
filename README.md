@@ -10,7 +10,12 @@ On a model railway this type of timer is very handy for general timing, signalli
 Notes:
 1) This class does not associate with any specific I/O pins it just wants a boolean 'input'
 2) Either of the time intervals could be 'zero' thus making it a simple 'On Delay' only, or 'off delay only.
-3) For a visual representation see the simple timing chart in the github repo
+3) For a visual representation see this simple timing chart:
+
+![alt text][TimingChart]
+
+[TimingChart]: https://github.com/Alan-Lomax/DblDelay/TimingDiagram.JPG "DblDelay Timing Diagram"
+
 4) Some sensors (active IR sensors - varies by manufacturer) are inverted whereby the signal is normally high (when nothing is in the beam)
    and when something is detected the signal goes low.  For these types of sensors set the boolean "invertInput" parameter to true.
 
