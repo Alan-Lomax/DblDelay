@@ -23,7 +23,7 @@ bool prevOutput;   // the prior Output - so we can only report on change
 DblDelay myTimer  (1000, 5000, invertInput);  // Create a timer with a 1 second on delay, 5 second off delay, input inversion is specified by the third parameter.
 
 void setup() {
-  Serial.begin(115200);                       // for serial / debug console
+  Serial.begin(9600);                         // for serial / debug console
   Serial.println(__FILE__);                   // by default I like to output the file name as a minimum.
 
   pinMode(SensorPin, INPUT_PULLUP);           // define our pin as input with pull up enabled
