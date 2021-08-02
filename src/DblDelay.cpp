@@ -10,7 +10,7 @@ DblDelay::DblDelay(unsigned long outputOnDelay, unsigned long outputOffDelay, bo
 }
 
 void DblDelay::init() {
-  _previousMillis = 0;               // set the timer to 0
+  _nextChangeOfState = 0;            // initialize the next Change Of State to 0
   _output = false;                   // assume the output is false (off)
   _input  = false;                   // assume the input is false (off)
   _lastInput = false;                // assume last input was the same as _input
@@ -23,18 +23,23 @@ void DblDelay::update() {
      A "high to low" delay changes the output after the "Off Delay" has expired.
   */
   if (_input != _lastInput) {            // The input has changed. It is not the same as it was!
-    _previousMillis = millis();          // capture the new time for this change
     _lastInput = _input;                 // and save the input value for the next time through update
+    if (_input == true) {                // Depending on what the input is now .. calculate the future time when the output needs to change
+      _nextChangeOfState = millis() + _outputOnDelay;     // input is true so output changes at current time plus the on delay
+    }
+    else {
+      _nextChangeOfState = millis() + _outputOffDelay;    // input is false so output changes at current time plus the off delay
+    }
   }
-  else {                                 // input has not changed (for example a subsequent call to update after the previous few lines of code was run)
-    if (_input == true) {
-      if (millis() - _previousMillis >= _outputOnDelay) {
-        _output = true;                                              // Only update the 'output' after OnDelay time has passed.
+  else {                                                  // input has not changed (for example a subsequent call to update after the previous few lines of code was run)
+    if (_input == true) {                                 // input is true
+      if (millis() >= _nextChangeOfState) {               // and time is up
+        _output = true;                                   // so update the 'output' since the OnDelay time has passed.
       }
     }
-    else {                                                           // _input must be false
-      if (millis() - _previousMillis >= _outputOffDelay) {
-        _output = false;                                             // Only update the 'output' after OffDelay time has passed
+    else {                                                // input must be false
+      if (millis() >= _nextChangeOfState) {               // and time is up
+        _output = false;                                  // so update the 'output' since the OffDelay time has passed.
       }
     }
   }
