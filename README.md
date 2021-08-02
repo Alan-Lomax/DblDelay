@@ -14,7 +14,7 @@ Notes:
 
 ![alt text][TimingChart]
 
-[TimingChart]: https://github.com/Alan-Lomax/DblDelay/TimingDiagram.JPG "DblDelay Timing Diagram"
+[TimingChart]: https://github.com/Alan-Lomax/DblDelay/blob/main/TimingDiagram.JPG "DblDelay Timing Diagram"
 
 4) Some sensors (active IR sensors - varies by manufacturer) are inverted whereby the signal is normally high (when nothing is in the beam)
    and when something is detected the signal goes low.  For these types of sensors set the boolean "invertInput" parameter to true.
