@@ -34,7 +34,7 @@ A second timer (using the same input but with different timing values) could tri
     /*
       DblDelay Example
       Objective: Turn on a Light Emitting Diode(LED) when a sensor detects an object.
-      The output is subject to a 2 second 'on delay' and a 5 second "off delay" vs the input state.
+      The output is subject to a 1 second 'on delay' and a 5 second "off delay" vs the input state.
       Note: some sensors are logic 'high' when nothing is detected and only go "low" when something is detected.
       Change the value of 'invertInput' from false to true or vice versa to compensate for this.
     */
